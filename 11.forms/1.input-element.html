@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            const {useState}= React
+            function App(props){
+                const [search,setSearch]= useState('type')
+                const change = (event) =>{
+                    //console.log(event.target)
+                    const inputVal=event.target.value
+                    setSearch(inputVal)
+                    
+                }
+                return(<input type='text' value={search} onChange={change}/>)
+            }
+            ReactDOM.render(<App/>,rootHandle)
+        </script>
+    </body>
+</html>

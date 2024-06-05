@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            hello world by react
+        </title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            const users=[
+            {"MS":"35\/45","IoT":"39\/46","AI":"40\/50","DWM":"31\/41","UHV":"18\/23","ASN":"34\/45","VA":"11\/12","APT":"10\/13","NW-CLUB":"0\/","LIBY":"0\/","CSI":"0\/","CNSL":"0\/","ML-CLUB":"0\/","AI-CLUB":"0\/","DS-CLUB":"0\/","percent":"83.96","percent_breakup":"314 \/ 374"}
+            ]
+            
+            const ele=(
+                <div>
+                    <div>
+                        <h2>listing users {users.length}</h2>
+                    </div>
+                    <div>
+                        <ul>
+                           {users.map((ele) =>{
+                            return <li>{ele.ele[ele]}</li>
+                            })
+                        }
+                        </ul>
+                    </div>
+                </div>
+            )
+                ReactDOM.render(ele,rootHandle)
+        </script>
+    </body>
+</html>

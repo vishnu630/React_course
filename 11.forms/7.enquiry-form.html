@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.7.0/validator.min.js" integrity="sha512-rJU+PnS2bHzDCvRGFhXouCSxf4YYaUyUfjXMHsHFfMKhWDIEBr8go2LZ2EYXOqASey1tWc2qToeOCYh9et2aGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            
+            const {useState}=React
+            function App(props){
+                const [name,setName]=useState('')
+                const [email,setEmail]=useState('')
+                const [message,setMessage]=useState('')
+                const [pro,setPro]=useState('')
+                const [genderbtn,setgenderbtn]=useState('')
+                const [mark,setMark]=useState(false)
+                const [info,setInfo]=useState(false)
+                const [formData,setFormdata]=useState({})
+                const error={}
+
+                const drop=['Engineer','Doctor','teacher']
+                const handleName =(event)=>{
+                    const result=event.target.value
+                    setName(result)
+                }
+                const handleEmail=(event)=>{
+                    const result=event.target.value
+                    setEmail(result)
+                }
+                const handleMessage =(event)=>{
+                    const result = event.target.value
+                    setMessage(result)
+                }
+                const handlePro=(event)=>{
+                    const result=event.target.value
+                    setPro(result)
+                }
+                const handlegenderbtn =(event)=>{
+                    const result=event.target.value
+                    setgenderbtn(result)
+                }
+                const handleMark =()=>{
+                    
+                    setMark(!mark)
+                }
+                const handleinfo=()=>{
+                    setInfo(!info)
+                }
+                const validateform=()=>{
+                    if(name.trim().length ===0){
+                        error.name='name cannot be error'
+                       
+                    }
+                    if (email.trim().length ===0){
+                        error.email='email cannot be error'
+                        
+                    }
+                    else if(!validator.isEmail(email)){
+                        error.email='invalid email id'
+                    }
+                }
+                const submit=(event)=>{
+                    event.preventDefault()
+                    validateform()
+                 if(Object.keys(error).length === 0){
+                        setFormdata({})
+                    
+                    const formData={
+                        name: name,email: email,message: message ,prof:pro ,gender:genderbtn,checkbox:mark
+                    }
+                    console.log(formData)
+                    setEmail('')
+                    setName('')
+                    setInfo(false)
+                    setMark(false)
+                    setMessage('')
+
+                }
+                    else{
+                        setFormdata(error)
+                    console.log(error)}
+                    
+                }
+                return(<div>
+                    <h1>Enquiry Form</h1>
+                    <form onSubmit={submit}>
+                        <label>Name</label><br/>
+                        <input type='text' value={name} onChange={handleName}/>
+                        {formData.name &&<span> {formData.name}</span>}
+                        <label>Email</label><br/>
+                        <input type="text" value={email} onChange={handleEmail}/>
+                        <label>Message</label><br/>
+                        <textarea type='text' value={message} onChange={handleMessage} onFocus={handleinfo} onBlur={handleinfo} /> {info && <span>enter ur details</span>}<br/>
+                        <select value={pro} onChange={handlePro}>
+                            {drop.map((ele,i)=>{
+                                return<option key={i} value={ele}>{ele}</option> 
+                            })}
+                        </select><br/>
+                        <label>Gender</label><br/>
+                        <input type="radio" name='gender' value='male' checked={genderbtn === 'male'} onChange={handlegenderbtn}/>male
+                        <input type='radio' name='gender' value='female' checked={genderbtn ==='female'} onChange={handlegenderbtn}/>female<br/>
+                        <input type='checkbox' value={mark} onChange={handleMark}/>I Agree to terms and conditions<br/>
+                        <input type='submit' value='submit -button' disabled={!mark}/>
+                    </form>
+                </div>)
+            }
+            ReactDOM.render(<App/>,rootHandle)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            const {useState}= React
+            function UserLaptop(props){
+                const [username,setName]=useState('')
+                const [lap,setLap]=useState('')
+                const change =(event)=>{
+                    const result=event.target.value
+                    setName(result)
+                }
+                const [isSubmit,setisSubmit]=useState(false)
+                const brand=['hp','apple','Acer','dell','rog']
+                const laptopChange=(event)=>{
+                    console.log(event.target.value)
+                      const result=event.target.value
+                      setLap(result)
+                }
+                const submit=(event)=>{
+                    event.preventDefault()
+                    setisSubmit(!isSubmit)
+                }
+                return(<div>
+                    {isSubmit&& <h1>{lap}</h1>}
+                    <form onSubmit={submit}>
+                        <label> username</label>
+                        <input type='text' value={username} onChange={change}/>
+                        <label>laptop</label> 
+                        <br/>
+                        <select value={lap} onChange={laptopChange}>
+                            {brand.map((ele,i)=>{
+                                return <option value={ele} key={i}>{ele}</option>
+                            })}
+                            {/*<option value='hp'> hp</option>
+                            <option value='apple'>apple</option>
+                            <option value='samsung'>samsung</option>
+                            <option value='dell'>dell</option>*/}
+                        </select>
+                        <input type='submit' value="save button"/>
+                    </form>
+                </div>)
+            }
+            ReactDOM.render(<UserLaptop/>,rootHandle)
+        </script>
+    </body>
+</html>

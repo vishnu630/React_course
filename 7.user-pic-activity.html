@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            hello world by react
+        </title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            const website={
+                first_name:'vishnu',
+                email:'vishnuteja779986@gmail.com',
+                url:"https://i.pinimg.com/originals/11/df/2b/11df2bc889722dab6946142dc9c70151.gif"
+            }
+            
+            const ele = <img src={website.url} alt={website.first_name}/>
+            ReactDOM.render(ele,rootHandle)
+        </script>
+    </body>
+</html>

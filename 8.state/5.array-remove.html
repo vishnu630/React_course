@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <div><h1>hello</h1></div>
+        <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/material-ui/5.0.0-beta.5/Button/Button.min.js" integrity="sha512-IPMEG9doVvLD1arncVBEDR+tAzb+DrFaYfc0Izl9Xfjjuiln5Ghp9b3HS5sBmY/F5Ls03IO5uGVVRi2jWGd+LA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            const {useState}=React
+            function App(props){
+                const [number,setnumber]=useState([])
+                const random=Math.round(Math.random()*100)
+                const addtonumber = () =>{
+                    const newarry=[...number,random]
+                    setnumber(newarry)
+                    
+                } 
+                const remove =(i)=>{
+                    const newnumber=[...number]
+                    newnumber.splice(i,1)
+                    setnumber(newnumber)
+                }
+                return(<div>
+                    <h1>total-{number.length}</h1>
+                    <button onClick={addtonumber}>add</button>
+                    <ul>
+                        {number.map((ele,i)=>{
+                            return<li key={i}> {ele}<button onClick={()=>{remove(i)}}>remove</button></li>
+                        })}
+                    </ul>
+                </div>)
+            }
+            ReactDOM.render(<App/>,rootHandle)
+        </script>
+    </body>
+</html>

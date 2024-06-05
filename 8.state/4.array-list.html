@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            const {useState}=React
+            function App(props){
+                const [number,setnumber]=useState([])
+                const random=Math.round(Math.random()*100)
+                const addtonumber = () =>{
+                    const newarry=[...number,random]
+                    setnumber(newarry)
+                    console.log(number)
+                } 
+                return(<div>
+                    <h1>total-{number.length}</h1>
+                    <button onClick={addtonumber}>add</button>
+                    <ul>
+                        {number.map((ele,i)=>{
+                            return<li key={i}> {ele}</li>
+                        })}
+                    </ul>
+                </div>)
+            }
+            ReactDOM.render(<App/>,rootHandle)
+        </script>
+    </body>
+</html>

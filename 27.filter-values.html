@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <div id="root">
+         
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            const tasks=[
+            {id:1,title:'Task1',isCompleted:true},
+            {id:2,title:'Task2',isCompleted:true},
+            {id:3,title:'Task3',isCompleted:false}
+                ]
+            //const retur_true=tasks.filter((task)=>{
+              //  return task.isCompleted
+            //})
+            //const retur_false=tasks.filter((task)=>{
+              //  return !task.isCompleted
+            //})
+            function Taskcehck(props){
+                return(
+                    <div>
+                        <h2>{props.name} task {props.task.length}</h2>
+                    <ul>{props.task.map((task)=>{return (<li key={task.id}>{task.title}</li>)})}</ul>
+                    </div>)
+            }
+            const ele=(<div>
+                <Taskcehck task={tasks} name ="all"/>
+                <Taskcehck task={tasks.filter((task)=>{return !task.isCompleted})} name="false"/>
+                <Taskcehck task={tasks.filter((task)=>{return task.isCompleted})} name="true"/>
+            </div>)
+            ReactDOM.render(ele,rootHandle)
+        </script>
+    </body>
+</html>

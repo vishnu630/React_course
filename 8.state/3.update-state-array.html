@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            const {useState}=React
+            //const names=['vishnu','teja','reddy']
+
+            function App(props){
+                const [names,setname]=useState(['vishnu','teja','reddy'])
+                
+                function remove(name){
+                    const newname=[...names]
+                    const index=newname.indexOf(name)
+                    newname.splice(index,1)
+                    setname(newname)
+                }
+                return(<div>
+                    <h1>friends list {names.lenght}</h1>
+                    <ul>{
+                        Object.keys(names).map((key,i)=>{
+                            return <li key={i}>{key}</li>
+
+                        })
+                        }
+                    </ul>
+                </div>)
+            } 
+            ReactDOM.render(<App/>,rootHandle)
+        </script>
+    </body>
+</html>

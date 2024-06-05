@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title> 
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+           // function alertmsg(){
+             //   alert('this is alert msg')
+            //}
+    
+            //const ele=<button onClick={alertmsg}>onclick</button>
+            function Great(props){
+                function alertmsg(){
+                    alert('this is alert msg '+props.name)
+                }
+                return(<button onClick={alertmsg}>onclick</button>)
+            }
+            const ele=<Great name='vishnu'/>
+             ReactDOM.render(ele,rootHandle)
+        </script>
+    </body>
+</html>

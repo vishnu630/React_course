@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            function Parent(props){
+                const name1='vishnu'
+                const name2='jhon'
+
+                function getPop(name){
+                    alert(`${name} hello`)
+                }
+                return(<div>
+                    <h2>this is parent component</h2>
+                    <Child name={name1} callback={getPop}/>
+                    <Child name={name2} callback={getPop}/>
+                     
+                </div>)
+
+            }
+            function Child(props){
+                return(
+                <div>    
+                <h2>this is child component {props.name}</h2>
+                <button onClick={()=>{props.callback(props.name)}}>pop</button>
+                </div>
+                )
+            }
+            ReactDOM.render(<Parent/>,rootHandle)
+        </script>
+    </body>
+</html>

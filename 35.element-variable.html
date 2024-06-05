@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+            function Autho(props){
+                const {islogin}=props
+                let button
+                if(islogin){
+                    button=<button>logout</button>
+                }
+                else{
+                    button=<button>login</button>
+                }
+                return(<div>
+                   {button}
+                </div>)
+            }
+            function App(props){
+                const islogin=true
+                return(<div>
+                    <h2> welcome to web page</h2>
+                    <Autho islogin={islogin} />
+                </div>)
+            }
+            ReactDOM.render(<App/>,rootHandle)
+        </script>
+    </body>
+</html>
